@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+  <a class="navbar-brand" routerLink="/home" routerLinkActive="active">Banking</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" [collapse]="isCollapsed">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/transfer">Transfer</a>
+      </li>
+    </ul>
+    <div class="form-inline my-2 my-lg-0 user-box">
+      Hello <strong class="ml-2">{{ currentUser.username }}</strong>!
+      <button class="btn btn-success ml-2 my-2 my-sm-0" type="button" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+<footer class="footer">
+  <div class="container text-center">
+    <span class="text-muted">
+      &copy; 2019, <a href="http://tnqsoft.com" target="_blank">TNQSoft</a>
+      <br />
+      Powered by Angular 7 and Bootstrap 4.
+    </span>
+  </div>
+</footer>

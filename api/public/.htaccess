@@ -1,0 +1,8 @@
+Options -Indexes +FollowSymLinks -Multiviews
+IndexIgnore */*
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9\-\_\.]+)/([a-zA-Z0-9\-\_\.]+)\/?\??(.*)?$ index.php?controller=$1&action=$2&$3 [L,QSA]
+RewriteRule ^([a-zA-Z0-9\-\_\.]+)\/?\??(.*)?$ index.php?controller=$1&$2 [L,QSA]

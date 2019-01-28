@@ -1,0 +1,112 @@
+<h3><i class="fa fa-history"></i> Transactions history</h3>
+<hr />
+
+<ngx-datatable
+  class="bootstrap"
+  [rows]="listTransfer"
+  [columnMode]="'force'"
+  [headerHeight]="50"
+  [footerHeight]="50"
+  [rowHeight]="'auto'"
+  [externalPaging]="true"
+  [count]="page.totalElements"
+  [offset]="page.pageNumber - 1"
+  [limit]="page.size"
+  (page)='getList($event)'>
+  <ngx-datatable-column name="" prop="transferType">
+    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+      <span (click)="sort()"><i class="fa fa-circle"></i></span>
+    </ng-template>
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <i *ngIf="value === 'Collect'" class="fa fa-circle text-success"></i>
+      <i *ngIf="value === 'Transfer'" class="fa fa-circle text-danger"></i>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="#" prop="id">
+    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+      <span (click)="sort()">{{column.name}}</span>
+    </ng-template>
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <div>{{ value }}</div>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Customer">
+    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+      <span (click)="sort()">{{column.name}}</span>
+    </ng-template>
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <div>{{ value }}</div>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Amount">
+    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+      <span (click)="sort()">{{column.name}}</span>
+    </ng-template>
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <div>{{ value | formatCurrency }}</div>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Date" prop="transferDate">
+    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+      <span (click)="sort()">{{column.name}}</span>
+    </ng-template>
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <div>{{ value }}</div>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Comment" prop="note">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      <span>{{column.name}}</span>
+    </ng-template>
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <div>{{ value }}</div>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Actions">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      <span>{{column.name}}</span>
+    </ng-template>
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <a [routerLink]="'/transfer/' + row.id" class="btn btn-info btn-sm mr-2"><i class="fa fa-pencil"></i></a>
+      <button type="button" class="btn btn-danger btn-sm mr-2" (click)="deleteConfirm(row)"><i class="fa fa-trash"></i></button>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>
+
+<!-- <table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Date</th>
+      <th scope="col">Comment</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of listTransfer">
+      <th scope="row">{{ item.id }}</th>
+      <td>{{ item.customer }}</td>
+      <td>{{ item.amount }}</td>
+      <td>{{ item.transferDate }}</td>
+      <td>{{ item.note }}</td>
+      <td>
+        <a [routerLink]="'/transfer/' + item.id" class="btn btn-info btn-sm mr-2"><i class="fa fa-pencil"></i></a>
+        <button type="button" class="btn btn-danger btn-sm mr-2" (click)="deleteConfirm(item)"><i class="fa fa-trash"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table> -->
+
+<!-- <ng-template #modalDeleteConfirm>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Delete Confirm</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Do you want to delete record with id "{{ currentItem.id }}"?.
+  </div>
+</ng-template> -->

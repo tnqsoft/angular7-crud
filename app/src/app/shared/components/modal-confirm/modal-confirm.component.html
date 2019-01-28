@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left text-center">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="onCancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body text-center">
+  {{ question }}
+</div>
+<div class="modal-footer text-center">
+  <button type="button" class="btn btn-danger" (click)="onOk()">{{ btnOkCaption }}</button>
+  <button type="button" class="btn btn-secondary" (click)="onCancel()">{{ btnCloseCaption }}</button>
+</div>

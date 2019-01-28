@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~font-awesome/css/font-awesome.css';
+@import '~bootstrap-scss/bootstrap.scss';
+@import "~ngx-bootstrap/datepicker/bs-datepicker.css";
+@import '~ngx-toastr/toastr-bs4-alert.scss';
+
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/bootstrap.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+
+body {
+  margin-bottom: 100px;
+  margin-top: 70px;
+}
+
+.footer {
+  margin-top: 50px;
+  border-top: 1px solid #dcdcdc;
+
+  & > .container {
+    padding: {
+      top: 30px;
+      right: 15px;
+      left: 15px;
+      bottom: 30px;
+    }
+  }
+}
+
+.jumbotron {
+  padding: 20px 10px;
+  h1 {
+    font-size: 30px;
+    font-weight: bold;
+  }
+}
+
+/* Fixed Toast Not Show With Angular 7 */
+#toast-container > div {
+  opacity:1;
+}

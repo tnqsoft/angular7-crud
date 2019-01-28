@@ -1,0 +1,44 @@
+<div class="jumbotron">
+  <div class="container-fluid">
+    <h1 class="display-3">Transfer</h1>
+    <!-- <p>This is a template for a simple marketing or informational website. It includes a large callout called a
+        jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> -->
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 col-xl-2">
+      <div class="list-group">
+        <a class="list-group-item list-group-item-action" routerLink="list" routerLinkActive="active">
+          List
+        </a>
+        <a class="list-group-item list-group-item-action" routerLink="add" routerLinkActive="active">
+          New Transfer
+        </a>
+      </div>
+      <div class="card">
+          <div class="card-header">
+            Summary
+          </div>
+          <div class="card-body text-center">
+            <div *ngIf="!error; else notError">
+              <h5 class="card-title">Current: <span class="text-black">{{
+                (summary?.startMoney + summary?.collectMoney - summary?.transferMoney) | formatCurrency
+              }}</span></h5>
+              <h5 class="card-title">Collect: <span class="text-success">{{ summary?.collectMoney | formatCurrency }}</span></h5>
+              <h5 class="card-title">Transfer: <span class="text-danger">{{ summary?.transferMoney | formatCurrency }}</span></h5>
+              <button type="button" class="btn btn-warning" (click)="updateSummary()" [disabled]="loading">
+                <i class="fa fa-refresh"></i> Synchronize
+              </button>
+            </div>
+            <ng-template #notError><span class="text-danger">Can not load data for summary.</span></ng-template>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-10 col-xl-10">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

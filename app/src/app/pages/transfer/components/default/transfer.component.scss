@@ -1,0 +1,14 @@
+@import "~bootstrap-scss/functions";
+@import "~bootstrap-scss/variables";
+
+:host /deep/ {
+  .ngx-datatable.bootstrap {
+    .datatable-header {
+      background-color: $blue;
+      color: #fff;
+    }
+    .datatable-footer {
+      background-color: $gray-500;
+    }
+  }
+}

@@ -1,0 +1,112 @@
+<h3>New Transfer</h3>
+<hr />
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-header">
+          Transfer information
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-7">
+                <div class="form-group">
+                    <label for="customer">Customer <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="customer" placeholder="Customer" formControlName="customer"
+                      [ngClass]="{
+                                'is-invalid': isFormCheck && form.controls['customer'].invalid,
+                                'is-valid': isFormCheck && form.controls['customer'].valid
+                              }">
+                    <div class="invalid-feedback">
+                      <span *ngIf="form.controls['customer'].hasError('required')">Field is required</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="amount">Amount <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="amount" placeholder="Amount" formControlName="amount" [ngClass]="{
+                                  'is-invalid': isFormCheck && form.controls['amount'].invalid,
+                                  'is-valid': isFormCheck && form.controls['amount'].valid
+                                }">
+                    <div class="invalid-feedback">
+                      <span *ngIf="form.controls['amount'].hasError('required')">Field is required</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="transferType">Type <span class="text-danger">*</span></label>
+                    <select class="form-control" id="transferType" placeholder="Type" formControlName="transferType" [ngClass]="{
+                                      'is-invalid': isFormCheck && form.controls['transferType'].invalid,
+                                      'is-valid': isFormCheck && form.controls['transferType'].valid
+                                    }">
+                      <option [value]="item" *ngFor="let item of listType">{{item}}</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      <span *ngIf="form.controls['transferType'].hasError('required')">Field is required</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="note">Note <span class="text-danger">*</span></label>
+                    <textarea class="form-control" placeholder="Note" name="note" formControlName="note" [ngClass]="{
+                                  'is-invalid': isFormCheck && form.controls['note'].invalid,
+                                  'is-valid': isFormCheck && form.controls['note'].valid
+                                }"></textarea>
+                    <div class="invalid-feedback">
+                      <span *ngIf="form.controls['note'].hasError('required')">Field is required</span>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label for="customerBankName">Bank's Name</label>
+                    <input type="text" class="form-control" id="customerBankName" placeholder="Bank's Name" formControlName="customerBankName"
+                      [ngClass]="{
+                                    'is-invalid': isFormCheck && form.controls['customerBankName'].invalid,
+                                    'is-valid': isFormCheck && form.controls['customerBankName'].valid
+                                  }">
+                    <div class="invalid-feedback">
+                      <span *ngIf="form.controls['customerBankName'].hasError('required')">Field is required</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="customerBankAcount">Bank's Acount</label>
+                    <input type="text" class="form-control" id="customerBankAcount" placeholder="Bank's Acount" formControlName="customerBankAcount"
+                      [ngClass]="{
+                                      'is-invalid': isFormCheck && form.controls['customerBankAcount'].invalid,
+                                      'is-valid': isFormCheck && form.controls['customerBankAcount'].valid
+                                    }">
+                    <div class="invalid-feedback">
+                      <span *ngIf="form.controls['customerBankAcount'].hasError('required')">Field is required</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="customerBankId">Bank's Id</label>
+                    <input type="text" class="form-control" id="customerBankId" placeholder="Bank's Id" formControlName="customerBankId"
+                      [ngClass]="{
+                                        'is-invalid': isFormCheck && form.controls['customerBankId'].invalid,
+                                        'is-valid': isFormCheck && form.controls['customerBankId'].valid
+                                      }">
+                    <div class="invalid-feedback">
+                      <span *ngIf="form.controls['customerBankId'].hasError('required')">Field is required</span>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          <button type="submit" class="btn btn-primary mr-2"><i class="fa fa-save"></i> Submit</button>
+          <a routerLink="/transfer/list" class="btn btn-secondary mr-2"><i class="fa fa-angle-left"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="text-center calendar-box">
+        <bs-datepicker-inline [bsValue]="bsInlineValue" (bsValueChange)="changeDate($event)" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD H:mm:ss', containerClass: 'theme-dark-blue' }"></bs-datepicker-inline>
+      </div>
+    </div>
+  </div>
+</form>
